@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>如何用Github搭建一个静态博客</title>
+    <url>/2026/03/21/my-first-blog/</url>
+    <content><![CDATA[<h1 id="前置准备（必须）"><a href="#前置准备（必须）" class="headerlink" title="前置准备（必须）"></a>前置准备（必须）</h1><h2 id="安装-Git"><a href="#安装-Git" class="headerlink" title="安装 Git"></a>安装 Git</h2><p>下载地址：<a href="https://git-scm.com/install/">https://git-scm.com/install/</a></p>
+<h2 id="安装-Node-js"><a href="#安装-Node-js" class="headerlink" title="安装 Node.js"></a>安装 Node.js</h2><p>下载地址：<a href="https://nodejs.org/zh-cn/">https://nodejs.org/zh-cn/</a></p>
+<h2 id="注册-GitHub-账号"><a href="#注册-GitHub-账号" class="headerlink" title="注册 GitHub 账号"></a>注册 GitHub 账号</h2><p>注册地址：<a href="https://github.com/">https://github.com/</a></p>
+<p><strong>验证安装是否成功</strong><br>打开「命令提示符（CMD）」或「终端」，输入以下命令，能显示版本号即成功：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 验证 Git </span></span><br><span class="line">git --version </span><br><span class="line"><span class="comment"># 验证 Node.js </span></span><br><span class="line">node -v </span><br><span class="line"><span class="comment"># 验证 npm </span></span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="创建-GitHub-Pages-仓库"><a href="#创建-GitHub-Pages-仓库" class="headerlink" title="创建 GitHub Pages 仓库"></a>创建 GitHub Pages 仓库</h1><p>GitHub Pages 会自动托管仓库里的静态文件，仓库命名有固定规则：</p>
+<ol>
+<li>登录 GitHub，点击右上角「+」→「New repository」</li>
+<li>仓库名称必须是：<strong>你的GitHub用户名.github.io</strong>（如 testuser.github.io）</li>
+<li>勾选「Public」（必须公开），勾选「Add a README file」，点击「Create repository」</li>
+</ol>
+<hr>
+<h1 id="本地搭建-Hexo-博客"><a href="#本地搭建-Hexo-博客" class="headerlink" title="本地搭建 Hexo 博客"></a>本地搭建 Hexo 博客</h1><h2 id="安装-Hexo-脚手架"><a href="#安装-Hexo-脚手架" class="headerlink" title="安装 Hexo 脚手架"></a>安装 Hexo 脚手架</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+
+<h2 id="初始化博客项目"><a href="#初始化博客项目" class="headerlink" title="初始化博客项目"></a>初始化博客项目</h2><p>选择一个本地文件夹（如桌面），执行：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 进入桌面（示例路径，可换成你自己的）</span></span><br><span class="line"><span class="built_in">cd</span> Desktop</span><br><span class="line"><span class="comment"># 初始化博客，文件夹名建议和 GitHub 仓库名一致</span></span><br><span class="line">hexo init testuser.github.io</span><br><span class="line"><span class="comment"># 进入博客文件夹</span></span><br><span class="line"><span class="built_in">cd</span> testuser.github.io</span><br><span class="line"><span class="comment"># 安装依赖</span></span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
+
+<h2 id="本地预览博客"><a href="#本地预览博客" class="headerlink" title="本地预览博客"></a>本地预览博客</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+<p>打开浏览器访问 <a href="http://localhost:4000/">http://localhost:4000</a> ，即可看到 Hexo 默认博客页面（按 Ctrl+C 停止服务器）。</p>
+<h2 id="写第一篇文章"><a href="#写第一篇文章" class="headerlink" title="写第一篇文章"></a>写第一篇文章</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new post <span class="string">&quot;我的第一篇博客&quot;</span></span><br></pre></td></tr></table></figure>
+<p>此时会在 <code>source/_posts/</code> 文件夹下生成 <code>我的第一篇博客.md</code> 文件，用 Markdown 编辑器（如 Typora、VS Code）打开即可编辑。<br>写完后重新执行 <code>hexo server</code>，即可本地预览新文章。</p>
+<hr>
+<h1 id="部署到-GitHub-Pages"><a href="#部署到-GitHub-Pages" class="headerlink" title="部署到 GitHub Pages"></a>部署到 GitHub Pages</h1><h2 id="安装-Hexo-部署插件"><a href="#安装-Hexo-部署插件" class="headerlink" title="安装 Hexo 部署插件"></a>安装 Hexo 部署插件</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+
+<h2 id="配置部署信息"><a href="#配置部署信息" class="headerlink" title="配置部署信息"></a>配置部署信息</h2><p>打开博客文件夹里的 <code>_config.yml</code> 文件，滑到最底部，修改 <code>deploy</code> 部分：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">https://github.com/你的GitHub用户名/你的GitHub用户名.github.io.git</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">main</span>  <span class="comment"># 注意：GitHub 默认分支是 main（旧版是 master），确认你的仓库分支名</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>⚠️ 注意：<code>_config.yml</code> 里的冒号 : 后面必须加空格，否则会报错！</p>
+</blockquote>
+<h2 id="部署到-GitHub"><a href="#部署到-GitHub" class="headerlink" title="部署到 GitHub"></a>部署到 GitHub</h2><p>执行以下命令（生成静态文件并推送到 GitHub）：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 清理旧的静态文件（可选）</span></span><br><span class="line">hexo clean</span><br><span class="line"><span class="comment"># 生成新的静态文件</span></span><br><span class="line">hexo generate</span><br><span class="line"><span class="comment"># 部署到 GitHub</span></span><br><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
+<p>第一次执行会弹出 GitHub 登录窗口，登录你的账号即可。<br>如果没弹窗，可能需要配置 Git 用户名和邮箱：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global user.name <span class="string">&quot;你的GitHub用户名&quot;</span></span><br><span class="line">git config --global user.email <span class="string">&quot;你的GitHub注册邮箱&quot;</span></span><br></pre></td></tr></table></figure>
+<!-- git config --global user.name Alex-GuTH -->
+<!-- git config --global user.email 251250143@smail.nju.edu.cn -->
+<h2 id="访问你的博客"><a href="#访问你的博客" class="headerlink" title="访问你的博客"></a>访问你的博客</h2><p>部署完成后，等待 1-2 分钟，打开浏览器访问：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">https://你的GitHub用户名.github.io</span><br></pre></td></tr></table></figure>
+<p>即可看到你的博客上线！</p>
+<hr>
+<h1 id="进阶优化"><a href="#进阶优化" class="headerlink" title="进阶优化"></a>进阶优化</h1><p>这部分会帮你把默认的 Hexo 博客打造成「个性化、功能完善、体验更好」的专属博客，所有操作都基于你已部署成功的基础，一步步来即可。</p>
+<h2 id="🔥-优化-1：更换高颜值主题"><a href="#🔥-优化-1：更换高颜值主题" class="headerlink" title="🔥 优化 1：更换高颜值主题"></a>🔥 优化 1：更换高颜值主题</h2><p>默认的 landscape 主题比较简陋，推荐 1 款主流、易配置的主题：</p>
+<p><strong>Butterfly 主题（颜值高、功能全）</strong></p>
+<p><strong>安装步骤：</strong><br>进入博客根目录（***.github.io），执行：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 克隆主题到 themes 文件夹</span></span><br><span class="line">git <span class="built_in">clone</span> -b master https://github.com/jerryc127/hexo-theme-butterfly.git themes/butterfly</span><br><span class="line"><span class="comment"># 安装必要依赖</span></span><br><span class="line">npm install hexo-renderer-pug hexo-renderer-stylus --save</span><br></pre></td></tr></table></figure>
+
+<p>或者在对应仓库里面下载.zip文件到本地，解压后重命名为 butterfly，放在 themes 目录下面。别忘记也需要安装依赖。</p>
+<p><strong>修改博客根目录的 _config.yml，把默认主题换成 butterfly：</strong></p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">theme:</span> <span class="string">butterfly</span>  <span class="comment"># 替换原来的 landscape</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>重新部署生效：</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo clean </span><br><span class="line">hexo generate <span class="comment"># 或简写 hexo g </span></span><br><span class="line">hexo deploy <span class="comment"># 或简写 hexo d</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>基础配置：</strong><br>打开 themes&#x2F;butterfly&#x2F;_config.yml（主题配置文件），修改核心参数：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 网站标题（自行在页面顶部添加）</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">我的个人博客</span></span><br><span class="line"><span class="comment"># 副标题</span></span><br><span class="line"><span class="attr">subtitle:</span> <span class="string">记录学习与成长</span></span><br><span class="line"><span class="comment"># 头像（替换成你的图片链接，可上传到本地的themes/butterfly/source/img后修改）</span></span><br><span class="line"><span class="attr">avatar:</span> <span class="string">/image/***.jpg</span></span><br><span class="line"><span class="comment"># 首页显示的标语</span></span><br><span class="line"><span class="attr">description:</span> <span class="string">保持热爱，奔赴山海</span></span><br></pre></td></tr></table></figure>
+<p>等等等等<br>所有你能看到的内容都可以进行修改，本人<del>懒得</del>不可能一一列举</p>
+<p><strong>效果：</strong><br>部署后你的博客会变成「卡片式布局、支持夜间模式、响应式适配手机 &#x2F; 电脑」，示例效果可看：<a href="https://butterfly.js.org/">Butterfly 演示站</a></p>
+]]></content>
+  </entry>
+</search>
