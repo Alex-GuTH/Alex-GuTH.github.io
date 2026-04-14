@@ -1,8 +1,196 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Java 入门</title>
+    <url>/2026/04/15/Java_learning/</url>
+    <content><![CDATA[<h1 id="输入与输出"><a href="#输入与输出" class="headerlink" title="输入与输出"></a>输入与输出</h1><p>在 Java 中，输入和输出（I&#x2F;O）可以通过不同的方式处理。最常见的方式是使用 <code>System.out</code> 和 <code>BufferedReader</code>。</p>
+<h2 id="System-out-输出"><a href="#System-out-输出" class="headerlink" title="System.out 输出"></a>System.out 输出</h2><p>这是 Java 中最基本的输出方式：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">HelloWorld</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Hello, World!&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>System.out.println</code> 用于打印一行文本并换行。<br><br><code>System.out.print</code> 也可以用来输出，但不会换行。</p>
+<h2 id="BufferedReader-输入"><a href="#BufferedReader-输入" class="headerlink" title="BufferedReader 输入"></a>BufferedReader 输入</h2><p>当你需要从控制台读取输入时，可以使用 <code>BufferedReader</code>，它比 <code>Scanner</code> 更高效，尤其在处理大量数据时。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">InputExample</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">        <span class="type">BufferedReader</span> <span class="variable">reader</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BufferedReader</span>(<span class="keyword">new</span> <span class="title class_">InputStreamReader</span>(System.in));</span><br><span class="line">        System.out.print(<span class="string">&quot;请输入一个整数: &quot;</span>);</span><br><span class="line">        <span class="type">int</span> <span class="variable">num</span> <span class="operator">=</span> Integer.parseInt(reader.readLine());  <span class="comment">// 读取并转换成整数</span></span><br><span class="line">        System.out.println(<span class="string">&quot;你输入的数字是: &quot;</span> + num);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>BufferedReader</code> 通过 <code>readLine()</code> 方法读取一行输入。<br><br><code>Integer.parseInt</code> 用于将字符串转换成整数。</p>
+<hr>
+<h1 id="基本数据类型与控制流"><a href="#基本数据类型与控制流" class="headerlink" title="基本数据类型与控制流"></a>基本数据类型与控制流</h1><h2 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h2><p>Java 的基本数据类型包括：</p>
+<ul>
+<li><code>int</code>、<code>float</code>、<code>double</code>、<code>char</code>、<code>boolean</code> 等等。</li>
+</ul>
+<p>与 C 相比，Java 的基本类型是严格的，不能随意转换类型。</p>
+<h2 id="条件判断与循环"><a href="#条件判断与循环" class="headerlink" title="条件判断与循环"></a>条件判断与循环</h2><p>Java 中的条件判断与循环语法与 C 十分相似：</p>
+<ul>
+<li><code>if</code>、<code>else</code>、<code>for</code>、<code>while</code> 控制流语法与 C 几乎一样。</li>
+<li>Java 中没有 <code>do-while</code> 语句，但你可以使用 <code>while</code> 模拟。</li>
+</ul>
+<hr>
+<h1 id="数组及其常用函数"><a href="#数组及其常用函数" class="headerlink" title="数组及其常用函数"></a>数组及其常用函数</h1><p>数组在 Java 中是对象，长度在创建后固定，访问时通过 <code>arr[index]</code>，长度使用 <code>arr.length</code>（注意它是字段，不是方法）。</p>
+<h2 id="数组定义与初始化"><a href="#数组定义与初始化" class="headerlink" title="数组定义与初始化"></a>数组定义与初始化</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span>[] nums = &#123;<span class="number">5</span>, <span class="number">2</span>, <span class="number">9</span>, <span class="number">1</span>, <span class="number">7</span>&#125;;</span><br><span class="line">String[] names = <span class="keyword">new</span> <span class="title class_">String</span>[<span class="number">3</span>];</span><br><span class="line">names[<span class="number">0</span>] = <span class="string">&quot;Alice&quot;</span>;</span><br><span class="line">names[<span class="number">1</span>] = <span class="string">&quot;Bob&quot;</span>;</span><br><span class="line">names[<span class="number">2</span>] = <span class="string">&quot;Cindy&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="数组遍历"><a href="#数组遍历" class="headerlink" title="数组遍历"></a>数组遍历</h2><p>当你只关心元素本身、不需要下标时，可以使用增强 <code>for</code> 循环，代码更简洁：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">sum</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> n : nums) &#123;</span><br><span class="line">    sum += n;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果你需要位置索引（例如修改元素），使用普通 <code>for</code> 循环更合适：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">    nums[i] = nums[i] * <span class="number">2</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Arrays-常用函数"><a href="#Arrays-常用函数" class="headerlink" title="Arrays 常用函数"></a>Arrays 常用函数</h2><p><code>java.util.Arrays</code> 提供了很多高频操作，能减少手写循环：</p>
+<p><code>sort()</code>：排序</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Arrays.sort(nums); <span class="comment">// 升序排序</span></span><br></pre></td></tr></table></figure>
+
+<p><code>binarySearch()</code>：二分查找（要求数组已排序）</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">idx</span> <span class="operator">=</span> Arrays.binarySearch(nums, <span class="number">7</span>);</span><br></pre></td></tr></table></figure>
+
+<p><code>copyOf()</code>：复制并可扩容</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span>[] bigger = Arrays.copyOf(nums, <span class="number">10</span>);</span><br></pre></td></tr></table></figure>
+
+<p><code>fill()</code>：批量填充</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Arrays.fill(names, <span class="string">&quot;Unknown&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p><code>equals()</code>：比较两个数组内容是否一致</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">boolean</span> <span class="variable">same</span> <span class="operator">=</span> Arrays.equals(<span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">1</span>, <span class="number">2</span>&#125;, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">1</span>, <span class="number">2</span>&#125;);</span><br></pre></td></tr></table></figure>
+
+<p><code>toString()</code>：快速打印一维数组内容</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">System.out.println(Arrays.toString(nums));</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="面向对象编程基础"><a href="#面向对象编程基础" class="headerlink" title="面向对象编程基础"></a>面向对象编程基础</h1><p>Java 是一个纯面向对象的编程语言。所有的代码都必须放在类中。</p>
+<h2 id="类与对象"><a href="#类与对象" class="headerlink" title="类与对象"></a>类与对象</h2><p>Java 中的类和对象非常重要，下面是一个简单的示例：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">    String name;</span><br><span class="line">    <span class="type">int</span> age;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 构造方法</span></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Person</span><span class="params">(String name, <span class="type">int</span> age)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">        <span class="built_in">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 方法</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">greet</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Hello, my name is &quot;</span> + name);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Person</span> <span class="variable">p</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&quot;John&quot;</span>, <span class="number">25</span>);</span><br><span class="line">        p.greet();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>类 <code>Person</code> 有两个成员变量 <code>name</code> 和 <code>age</code>，以及一个方法 <code>greet</code>。<br><br>构造方法用于创建对象，并初始化其属性。</p>
+<h2 id="继承与多态"><a href="#继承与多态" class="headerlink" title="继承与多态"></a>继承与多态</h2><p>Java 支持继承和多态：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Animal</span> &#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">makeSound</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Animal makes a sound&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Dog</span> <span class="keyword">extends</span> <span class="title class_">Animal</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">makeSound</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Dog barks&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TestPolymorphism</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Animal</span> <span class="variable">myDog</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Dog</span>();  <span class="comment">// 多态</span></span><br><span class="line">        myDog.makeSound();         <span class="comment">// 输出 &quot;Dog barks&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>Dog</code> 类继承了 <code>Animal</code> 类，并重写了 <code>makeSound</code> 方法。<br><br>多态允许通过父类引用指向子类对象，调用子类的实现。</p>
+<hr>
+<h1 id="常用类库与-API"><a href="#常用类库与-API" class="headerlink" title="常用类库与 API"></a>常用类库与 API</h1><p>Java 提供了丰富的标准类库，以下是常用类别及其常用方法：</p>
+<ul>
+<li><strong>字符串处理：</strong><code>String</code>、<code>StringBuilder</code>、<code>StringBuffer</code></li>
+<li><strong>集合框架：</strong><code>ArrayList</code>、<code>HashMap</code>、<code>HashSet</code></li>
+<li><strong>文件处理：</strong><code>File</code>、<code>BufferedReader</code>、<code>BufferedWriter</code></li>
+<li><strong>日期与时间：</strong><code>LocalDate</code>、<code>LocalTime</code>、<code>LocalDateTime</code></li>
+</ul>
+<h2 id="字符串处理类"><a href="#字符串处理类" class="headerlink" title="字符串处理类"></a>字符串处理类</h2><h3 id="String"><a href="#String" class="headerlink" title="String"></a>String</h3><p>String 是 Java 中最常用的类之一，用于表示不可变字符串。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">s</span> <span class="operator">=</span> <span class="string">&quot;Hello&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<p><code>length()</code>：返回字符串长度</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">len</span> <span class="operator">=</span> s.length(); <span class="comment">// 5</span></span><br></pre></td></tr></table></figure>
+
+<p><code>charAt(int index)</code>：返回指定位置字符</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">char</span> <span class="variable">c</span> <span class="operator">=</span> s.charAt(<span class="number">1</span>); <span class="comment">// &#x27;e&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>substring(int beginIndex, int endIndex)</code>：获取子字符串</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">sub</span> <span class="operator">=</span> s.substring(<span class="number">1</span>, <span class="number">4</span>); <span class="comment">// &quot;ell&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>contains(CharSequence seq)</code>：判断是否包含子串</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">boolean</span> <span class="variable">contains</span> <span class="operator">=</span> s.contains(<span class="string">&quot;ell&quot;</span>); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<p><code>equals(Object obj)</code>：判断字符串是否相等</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">boolean</span> <span class="variable">isEqual</span> <span class="operator">=</span> s.equals(<span class="string">&quot;Hello&quot;</span>); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<p><code>toUpperCase()</code> &#x2F; <code>toLowerCase()</code>：转大写&#x2F;小写</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">upper</span> <span class="operator">=</span> s.toUpperCase(); <span class="comment">// &quot;HELLO&quot;</span></span><br><span class="line"><span class="type">String</span> <span class="variable">lower</span> <span class="operator">=</span> s.toLowerCase(); <span class="comment">// &quot;hello&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="StringBuilder-和-StringBuffer"><a href="#StringBuilder-和-StringBuffer" class="headerlink" title="StringBuilder 和 StringBuffer"></a>StringBuilder 和 StringBuffer</h3><p>可变字符串，常用于拼接。<code>StringBuffer</code> 线程安全，<code>StringBuilder</code> 更高效。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">StringBuilder</span> <span class="variable">sb</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuilder</span>(<span class="string">&quot;Hello&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p><code>append(String str)</code>：追加字符串</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">sb.append(<span class="string">&quot; World&quot;</span>); <span class="comment">// &quot;Hello World&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>insert(int offset, String str)</code>：插入字符串</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">sb.insert(<span class="number">5</span>, <span class="string">&quot;,&quot;</span>); <span class="comment">// &quot;Hello, World&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>delete(int start, int end)</code>：删除指定范围字符</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">sb.delete(<span class="number">5</span>, <span class="number">6</span>); <span class="comment">// &quot;Hello World&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>reverse()</code>：反转字符串</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">sb.reverse(); <span class="comment">// &quot;olleH&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="集合框架类"><a href="#集合框架类" class="headerlink" title="集合框架类"></a>集合框架类</h2><h3 id="List（ArrayList-LinkedList）"><a href="#List（ArrayList-LinkedList）" class="headerlink" title="List（ArrayList, LinkedList）"></a>List（ArrayList, LinkedList）</h3><p>有序集合，允许重复元素。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">List&lt;String&gt; list = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br></pre></td></tr></table></figure>
+
+<p><code>add(E e)</code>：添加元素</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">list.add(<span class="string">&quot;Hello&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p><code>get(int index)</code>：获取元素</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">element</span> <span class="operator">=</span> list.get(<span class="number">0</span>); <span class="comment">// &quot;Hello&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>size()</code>：元素数量</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">size</span> <span class="operator">=</span> list.size(); <span class="comment">// 0</span></span><br></pre></td></tr></table></figure>
+
+<p><code>contains(Object o)</code>：是否包含元素</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">boolean</span> <span class="variable">contains</span> <span class="operator">=</span> list.contains(<span class="string">&quot;Hello&quot;</span>); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<p><code>remove(int index)</code>：删除元素</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">list.remove(<span class="number">0</span>); <span class="comment">// 删除索引为0的元素</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Set（HashSet-TreeSet）"><a href="#Set（HashSet-TreeSet）" class="headerlink" title="Set（HashSet, TreeSet）"></a>Set（HashSet, TreeSet）</h3><p>无序且不重复元素集合。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Set&lt;String&gt; set = <span class="keyword">new</span> <span class="title class_">HashSet</span>&lt;&gt;();</span><br></pre></td></tr></table></figure>
+
+<p><code>add(E e)</code>：添加元素</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">set.add(<span class="string">&quot;Apple&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p><code>contains(Object o)</code>：是否包含元素</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">boolean</span> <span class="variable">exists</span> <span class="operator">=</span> set.contains(<span class="string">&quot;Apple&quot;</span>); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<p><code>remove(Object o)</code>：删除元素</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">set.remove(<span class="string">&quot;Apple&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Map（HashMap-TreeMap）"><a href="#Map（HashMap-TreeMap）" class="headerlink" title="Map（HashMap, TreeMap）"></a>Map（HashMap, TreeMap）</h3><p>键值对集合，键唯一。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Map&lt;String, Integer&gt; map = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br></pre></td></tr></table></figure>
+
+<p><code>put(K key, V value)</code>：添加键值对</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">map.put(<span class="string">&quot;Apple&quot;</span>, <span class="number">3</span>);</span><br></pre></td></tr></table></figure>
+
+<p><code>get(Object key)</code>：获取值</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">value</span> <span class="operator">=</span> map.get(<span class="string">&quot;Apple&quot;</span>); <span class="comment">// 3</span></span><br></pre></td></tr></table></figure>
+
+<p><code>containsKey(Object key)</code>：是否包含键</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">boolean</span> <span class="variable">hasKey</span> <span class="operator">=</span> map.containsKey(<span class="string">&quot;Apple&quot;</span>); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<p><code>remove(Object key)</code>：删除键值对</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">map.remove(<span class="string">&quot;Apple&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="文件处理类"><a href="#文件处理类" class="headerlink" title="文件处理类"></a>文件处理类</h2><h3 id="File"><a href="#File" class="headerlink" title="File"></a>File</h3><p>用于表示文件和目录。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">File</span> <span class="variable">file</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;example.txt&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p><code>exists()</code>：判断是否存在</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">boolean</span> <span class="variable">exists</span> <span class="operator">=</span> file.exists();</span><br></pre></td></tr></table></figure>
+
+<p><code>delete()</code>：删除文件&#x2F;目录</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">boolean</span> <span class="variable">deleted</span> <span class="operator">=</span> file.delete();</span><br></pre></td></tr></table></figure>
+
+<h3 id="BufferedReader-BufferedWriter"><a href="#BufferedReader-BufferedWriter" class="headerlink" title="BufferedReader, BufferedWriter"></a>BufferedReader, BufferedWriter</h3><p>高效文件读写。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">BufferedReader</span> <span class="variable">reader</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BufferedReader</span>(<span class="keyword">new</span> <span class="title class_">FileReader</span>(<span class="string">&quot;file.txt&quot;</span>));</span><br></pre></td></tr></table></figure>
+
+<p><code>readLine()</code>：读取一行</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">line</span> <span class="operator">=</span> reader.readLine();</span><br></pre></td></tr></table></figure>
+
+<p><code>write(String str)</code>：写入文本</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">BufferedWriter</span> <span class="variable">writer</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BufferedWriter</span>(<span class="keyword">new</span> <span class="title class_">FileWriter</span>(<span class="string">&quot;file.txt&quot;</span>));</span><br><span class="line">writer.write(<span class="string">&quot;Hello, World!&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="日期与时间处理类"><a href="#日期与时间处理类" class="headerlink" title="日期与时间处理类"></a>日期与时间处理类</h2><h3 id="LocalDate-LocalTime-LocalDateTime"><a href="#LocalDate-LocalTime-LocalDateTime" class="headerlink" title="LocalDate, LocalTime, LocalDateTime"></a>LocalDate, LocalTime, LocalDateTime</h3><p>用于日期、时间、日期时间。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">LocalDate</span> <span class="variable">date</span> <span class="operator">=</span> LocalDate.now();</span><br></pre></td></tr></table></figure>
+
+<p><code>now()</code>：获取当前日期&#x2F;时间</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">LocalDate</span> <span class="variable">date</span> <span class="operator">=</span> LocalDate.now();</span><br><span class="line"><span class="type">LocalTime</span> <span class="variable">time</span> <span class="operator">=</span> LocalTime.now();</span><br><span class="line"><span class="type">LocalDateTime</span> <span class="variable">dateTime</span> <span class="operator">=</span> LocalDateTime.now();</span><br></pre></td></tr></table></figure>
+
+<p><code>plusDays(long days)</code> &#x2F; <code>minusDays(long days)</code>：加减天数</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">LocalDate</span> <span class="variable">tomorrow</span> <span class="operator">=</span> date.plusDays(<span class="number">1</span>);</span><br><span class="line"><span class="type">LocalDate</span> <span class="variable">yesterday</span> <span class="operator">=</span> date.minusDays(<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+
+<p><code>format(DateTimeFormatter formatter)</code>：格式化</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">DateTimeFormatter</span> <span class="variable">formatter</span> <span class="operator">=</span> DateTimeFormatter.ofPattern(<span class="string">&quot;yyyy-MM-dd&quot;</span>);</span><br><span class="line"><span class="type">String</span> <span class="variable">formattedDate</span> <span class="operator">=</span> date.format(formatter); <span class="comment">// &quot;2026-04-13&quot;</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h1><p>在 Java 中，异常是通过 <code>try-catch</code> 块来处理的。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ExceptionExample</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">result</span> <span class="operator">=</span> <span class="number">10</span> / <span class="number">0</span>;  <span class="comment">// 可能引发异常</span></span><br><span class="line">        &#125; <span class="keyword">catch</span> (ArithmeticException e) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;出现除零错误: &quot;</span> + e.getMessage());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>try</code> 块用于执行可能抛出异常的代码，<code>catch</code> 块用于捕获并处理异常。</p>
+]]></content>
+  </entry>
+  <entry>
     <title>如何用Github搭建一个静态博客</title>
-    <url>/2026/03/21/my-first-blog/</url>
+    <url>/2026/03/21/Welcome_to_my_blog/</url>
     <content><![CDATA[<h1 id="前置准备（必须）"><a href="#前置准备（必须）" class="headerlink" title="前置准备（必须）"></a>前置准备（必须）</h1><h2 id="安装-Git"><a href="#安装-Git" class="headerlink" title="安装 Git"></a>安装 Git</h2><p>下载地址：<a href="https://git-scm.com/install/">https://git-scm.com/install/</a></p>
 <h2 id="安装-Node-js"><a href="#安装-Node-js" class="headerlink" title="安装 Node.js"></a>安装 Node.js</h2><p>下载地址：<a href="https://nodejs.org/zh-cn/">https://nodejs.org/zh-cn/</a></p>
 <h2 id="注册-GitHub-账号"><a href="#注册-GitHub-账号" class="headerlink" title="注册 GitHub 账号"></a>注册 GitHub 账号</h2><p>注册地址：<a href="https://github.com/">https://github.com/</a></p>
@@ -45,7 +233,7 @@
 <p>即可看到你的博客上线！</p>
 <hr>
 <h1 id="进阶优化"><a href="#进阶优化" class="headerlink" title="进阶优化"></a>进阶优化</h1><p>这部分会帮你把默认的 Hexo 博客打造成「个性化、功能完善、体验更好」的专属博客，所有操作都基于你已部署成功的基础，一步步来即可。</p>
-<h2 id="🔥-优化-1：更换高颜值主题"><a href="#🔥-优化-1：更换高颜值主题" class="headerlink" title="🔥 优化 1：更换高颜值主题"></a>🔥 优化 1：更换高颜值主题</h2><p>默认的 landscape 主题比较简陋，推荐 1 款主流、易配置的主题：</p>
+<h2 id="🔥-更换高颜值主题"><a href="#🔥-更换高颜值主题" class="headerlink" title="🔥 更换高颜值主题"></a>🔥 更换高颜值主题</h2><p>默认的 landscape 主题比较简陋，推荐 1 款主流、易配置的主题：</p>
 <p><strong>Butterfly 主题（颜值高、功能全）</strong></p>
 <p><strong>安装步骤：</strong><br>进入博客根目录（***.github.io），执行：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 克隆主题到 themes 文件夹</span></span><br><span class="line">git <span class="built_in">clone</span> -b master https://github.com/jerryc127/hexo-theme-butterfly.git themes/butterfly</span><br><span class="line"><span class="comment"># 安装必要依赖</span></span><br><span class="line">npm install hexo-renderer-pug hexo-renderer-stylus --save</span><br></pre></td></tr></table></figure>
@@ -62,7 +250,7 @@
 <p>等等等等<br>所有你能看到的内容都可以进行修改，本人<del>懒得</del>不可能一一列举</p>
 <p><strong>效果：</strong><br>部署后你的博客会变成「卡片式布局、支持夜间模式、响应式适配手机 &#x2F; 电脑」，示例效果可看：<a href="https://butterfly.js.org/">Butterfly 演示站</a></p>
 <hr>
-<h2 id="📝-优化-2：增强博客功能"><a href="#📝-优化-2：增强博客功能" class="headerlink" title="📝 优化 2：增强博客功能"></a>📝 优化 2：增强博客功能</h2><h3 id="（1）添加读者评论功能"><a href="#（1）添加读者评论功能" class="headerlink" title="（1）添加读者评论功能"></a>（1）添加读者评论功能</h3><p>推荐用 <strong>Utterances</strong>（基于 GitHub Issues，无需额外注册，适合程序员）：</p>
+<h2 id="📝-增强博客功能"><a href="#📝-增强博客功能" class="headerlink" title="📝 增强博客功能"></a>📝 增强博客功能</h2><h3 id="（1）添加读者评论功能"><a href="#（1）添加读者评论功能" class="headerlink" title="（1）添加读者评论功能"></a>（1）添加读者评论功能</h3><p>推荐用 <strong>Utterances</strong>（基于 GitHub Issues，无需额外注册，适合程序员）：</p>
 <p><strong>配置步骤：</strong></p>
 <ol>
 <li>打开 GitHub，给你的博客仓库开启 Issues（仓库 → Settings → Features → 勾选 Issues）。</li>
