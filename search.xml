@@ -34,6 +34,9 @@
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">    nums[i] = nums[i] * <span class="number">2</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="Arrays-常用函数"><a href="#Arrays-常用函数" class="headerlink" title="Arrays 常用函数"></a>Arrays 常用函数</h2><p><code>java.util.Arrays</code> 提供了很多高频操作，能减少手写循环：</p>
+<p>前提代码：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br></pre></td></tr></table></figure>
+
 <p><code>sort()</code>：排序</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Arrays.sort(nums); <span class="comment">// 升序排序</span></span><br></pre></td></tr></table></figure>
 
@@ -107,6 +110,10 @@
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">sb.reverse(); <span class="comment">// &quot;olleH&quot;</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="集合框架类"><a href="#集合框架类" class="headerlink" title="集合框架类"></a>集合框架类</h2><h3 id="List（ArrayList-LinkedList）"><a href="#List（ArrayList-LinkedList）" class="headerlink" title="List（ArrayList, LinkedList）"></a>List（ArrayList, LinkedList）</h3><p>有序集合，允许重复元素。</p>
+<p>ArrayList 基于动态数组，适合随机访问；LinkedList 基于链表，适合频繁插入和删除。</p>
+<p>前提代码：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br></pre></td></tr></table></figure>
+
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">List&lt;String&gt; list = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br></pre></td></tr></table></figure>
 
 <p><code>add(E e)</code>：添加元素</p>
@@ -125,6 +132,10 @@
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">list.remove(<span class="number">0</span>); <span class="comment">// 删除索引为0的元素</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="Set（HashSet-TreeSet）"><a href="#Set（HashSet-TreeSet）" class="headerlink" title="Set（HashSet, TreeSet）"></a>Set（HashSet, TreeSet）</h3><p>无序且不重复元素集合。</p>
+<p>HashSet 基于哈希表，查询速度快；TreeSet 基于红黑树，元素会按排序规则保持有序。</p>
+<p>前提代码：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.HashSet;</span><br><span class="line"><span class="keyword">import</span> java.util.Set;</span><br></pre></td></tr></table></figure>
+
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Set&lt;String&gt; set = <span class="keyword">new</span> <span class="title class_">HashSet</span>&lt;&gt;();</span><br></pre></td></tr></table></figure>
 
 <p><code>add(E e)</code>：添加元素</p>
@@ -137,6 +148,10 @@
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">set.remove(<span class="string">&quot;Apple&quot;</span>);</span><br></pre></td></tr></table></figure>
 
 <h3 id="Map（HashMap-TreeMap）"><a href="#Map（HashMap-TreeMap）" class="headerlink" title="Map（HashMap, TreeMap）"></a>Map（HashMap, TreeMap）</h3><p>键值对集合，键唯一。</p>
+<p>HashMap 基于哈希表，适合快速查找；TreeMap 基于红黑树，键会按顺序排列。</p>
+<p>前提代码：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br></pre></td></tr></table></figure>
+
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Map&lt;String, Integer&gt; map = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br></pre></td></tr></table></figure>
 
 <p><code>put(K key, V value)</code>：添加键值对</p>
@@ -152,6 +167,9 @@
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">map.remove(<span class="string">&quot;Apple&quot;</span>);</span><br></pre></td></tr></table></figure>
 
 <h2 id="文件处理类"><a href="#文件处理类" class="headerlink" title="文件处理类"></a>文件处理类</h2><h3 id="File"><a href="#File" class="headerlink" title="File"></a>File</h3><p>用于表示文件和目录。</p>
+<p>前提代码：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.File;</span><br></pre></td></tr></table></figure>
+
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">File</span> <span class="variable">file</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;example.txt&quot;</span>);</span><br></pre></td></tr></table></figure>
 
 <p><code>exists()</code>：判断是否存在</p>
@@ -161,6 +179,9 @@
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">boolean</span> <span class="variable">deleted</span> <span class="operator">=</span> file.delete();</span><br></pre></td></tr></table></figure>
 
 <h3 id="BufferedReader-BufferedWriter"><a href="#BufferedReader-BufferedWriter" class="headerlink" title="BufferedReader, BufferedWriter"></a>BufferedReader, BufferedWriter</h3><p>高效文件读写。</p>
+<p>前提代码：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.BufferedReader;</span><br><span class="line"><span class="keyword">import</span> java.io.BufferedWriter;</span><br><span class="line"><span class="keyword">import</span> java.io.FileReader;</span><br><span class="line"><span class="keyword">import</span> java.io.FileWriter;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br></pre></td></tr></table></figure>
+
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">BufferedReader</span> <span class="variable">reader</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BufferedReader</span>(<span class="keyword">new</span> <span class="title class_">FileReader</span>(<span class="string">&quot;file.txt&quot;</span>));</span><br></pre></td></tr></table></figure>
 
 <p><code>readLine()</code>：读取一行</p>
@@ -170,6 +191,9 @@
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">BufferedWriter</span> <span class="variable">writer</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BufferedWriter</span>(<span class="keyword">new</span> <span class="title class_">FileWriter</span>(<span class="string">&quot;file.txt&quot;</span>));</span><br><span class="line">writer.write(<span class="string">&quot;Hello, World!&quot;</span>);</span><br></pre></td></tr></table></figure>
 
 <h2 id="日期与时间处理类"><a href="#日期与时间处理类" class="headerlink" title="日期与时间处理类"></a>日期与时间处理类</h2><h3 id="LocalDate-LocalTime-LocalDateTime"><a href="#LocalDate-LocalTime-LocalDateTime" class="headerlink" title="LocalDate, LocalTime, LocalDateTime"></a>LocalDate, LocalTime, LocalDateTime</h3><p>用于日期、时间、日期时间。</p>
+<p>前提代码：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.time.LocalDate;</span><br><span class="line"><span class="keyword">import</span> java.time.LocalDateTime;</span><br><span class="line"><span class="keyword">import</span> java.time.LocalTime;</span><br><span class="line"><span class="keyword">import</span> java.time.format.DateTimeFormatter;</span><br></pre></td></tr></table></figure>
+
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">LocalDate</span> <span class="variable">date</span> <span class="operator">=</span> LocalDate.now();</span><br></pre></td></tr></table></figure>
 
 <p><code>now()</code>：获取当前日期&#x2F;时间</p>
